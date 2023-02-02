@@ -16,35 +16,31 @@ class Solution {
     public int[] solution(int k, int[] score) {
         int[] answer = new int[score.length];
         int[] hofArr = new int[k];
-        if(3 <= k && k <= 100 && 7 <= score.length && score.length <= 1000){
-            for (int i = 0; i < k; i++) {
-                if(0 <= score[i] && score[i] <= 2000){
-                    hofArr[i] = score[i];
-                    int min = 0;
-                    if (i == 0){
-                        min = score[i];
-                    }else{
-                        Arrays.sort(hofArr, 0, i);
-                        min = hofArr[0];
-                    }
-                    answer[i] = min;
+        for (int i = 0; i < k; i++) {
+            if(0 <= score[i] && score[i] <= 2000){
+                hofArr[i] = score[i];
+                int min = 0;
+                if (i == 0){
+                    min = score[i];
+                }else{
+                    Arrays.sort(hofArr, 0, i);
+                    min = hofArr[0];
                 }
+                answer[i] = min;
             }
-            for (int i = k; i < score.length; i++) {
-                if(7 <= score.length && score.length <= 2000){
-                    int min = min(hofArr)[0];
-                    if(min < score[i]){
-                        int idx = min(hofArr)[1];
-                        hofArr[idx] = score[i];
-                        min = min(hofArr)[0];
-                    }else if(min > score[i]){
-                        min = min(hofArr)[0];
-                    }else if(min == score[i]){
-                        min = min(hofArr)[0];
-                    }
-                    answer[i] = min;            
-                }
+        }
+        for (int i = k; i < score.length; i++) {
+            int min = min(hofArr)[0];
+            if(min < score[i]){
+                int idx = min(hofArr)[1];
+                hofArr[idx] = score[i];
+                min = min(hofArr)[0];
+            }else if(min > score[i]){
+                min = min(hofArr)[0];
+            }else if(min == score[i]){
+                min = min(hofArr)[0];
             }
+            answer[i] = min;            
         }
         return answer;
     }
