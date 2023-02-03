@@ -17,18 +17,31 @@ class Solution {
         int[] answer = new int[score.length];
         int[] hofArr = new int[k];
         for (int i = 0; i < k; i++) {
-            if(0 <= score[i] && score[i] <= 2000){
+            try {
                 hofArr[i] = score[i];
                 int min = 0;
                 if (i == 0){
                     min = score[i];
                 }else{
-                    Arrays.sort(hofArr, 0, i);
+                    Arrays.sort(hofArr, 0, i+1);
                     min = hofArr[0];
                 }
                 answer[i] = min;
-            }
-        }
+            } catch (Exception e) { break;}
+        } // 1번~k번까지 값을 추가
+        // for (int i = 0; i < k; i++) {
+        //     if(0 <= score[i] && score[i] <= 2000){
+        //         hofArr[i] = score[i];
+        //         int min = 0;
+        //         if (i == 0){
+        //             min = score[i];
+        //         }else{
+        //             Arrays.sort(hofArr, 0, i);
+        //             min = hofArr[0];
+        //         }
+        //         answer[i] = min;
+        //     }
+        // }
         for (int i = k; i < score.length; i++) {
             int min = min(hofArr)[0];
             if(min < score[i]){
