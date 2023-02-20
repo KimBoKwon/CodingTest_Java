@@ -33,33 +33,25 @@ class Solution18 {
 
     public String result(HashMap<String, Integer> total_grade) {
         String answer = "";
-        if(total_grade.get("R") > total_grade.get("T")){
+        if(total_grade.get("R") >= total_grade.get("T")){
             answer += "R";
         }else if(total_grade.get("R") < total_grade.get("T")){
             answer += "T";
-        }else if(total_grade.get("R") == total_grade.get("T")){
-            answer += "R";
         }
-        if(total_grade.get("C") > total_grade.get("F")){
+        if(total_grade.get("C") >= total_grade.get("F")){
             answer += "C";
         }else if(total_grade.get("C") < total_grade.get("F")){
             answer += "F";
-        }else if(total_grade.get("C") == total_grade.get("F")){
-            answer += "C";
         }
-        if(total_grade.get("J") > total_grade.get("M")){
+        if(total_grade.get("J") >= total_grade.get("M")){
             answer += "J";
         }else if(total_grade.get("J") < total_grade.get("M")){
             answer += "M";
-        }else if(total_grade.get("J") == total_grade.get("M")){
-            answer += "J";
         }
-        if(total_grade.get("A") > total_grade.get("N")){
+        if(total_grade.get("A") >= total_grade.get("N")){
             answer += "A";
         }else if(total_grade.get("A") < total_grade.get("N")){
             answer += "N";
-        }else if(total_grade.get("A") == total_grade.get("N")){
-            answer += "A";
         }
         
         return answer;
